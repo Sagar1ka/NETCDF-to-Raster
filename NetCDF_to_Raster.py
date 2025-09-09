@@ -1,7 +1,3 @@
-"""
-Created on Tue Mar 29 16:22:38 2022
-@author: S0X999
-"""
 
 from pathlib import Path
 import xarray as xr
@@ -46,4 +42,5 @@ for nc_file in files:
     # Loop through time dimension (assuming 12 months)
     for k in range(len(ET_clipped.time)):
         out_file = output_path / f"{nc_file.stem}_{months[k]}.tiff"
+
         ET_clipped.isel(time=k).rio.to_raster(out_file)
